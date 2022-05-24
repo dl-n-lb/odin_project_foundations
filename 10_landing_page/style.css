@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500&display=swap');
+
+body {
+    font-family: Roboto;
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+.header, .top, .two {
+    padding: 16px, 10%;
+}
+
+.header {
+    padding: 16px 10%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1F2937;
+
+    margin: 0;
+}
+
+.header-links {
+    display: flex;
+    gap: 24px;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+li {
+    list-style-type: none;
+}
+
+.logo {
+    font-size: 24px;
+    color: #F9FAF8;
+}
+
+.top {
+    padding: 16px 10%;
+    margin: 0;
+    background-color: #1F2937;
+    color: #F9FAF8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 500px;
+    gap: 32px;
+}
+
+.hero {
+    font-size: 48px;
+    font-weight: 900;
+}
+
+.sign-up {
+    background-color: #3882F6;
+    color: #F9FAF8;
+    border: 0;
+    border-radius: 8px;
+    padding: 4px 16px;
+}
+
+img {
+    width: fit-content;
+    height: 300px;
+    object-fit: scale-down;
+    object-position: 0% 30%;
+    overflow: hidden;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #E5E7EB;
+    font-weight: 300;
+}
+
+.showcase {
+    display: flex;
+    justify-content: space-between;
+}
+
+.showcase-item {
+    width: 300px;
+}
+
+.heading-two  {
+    text-align: center;
+}
+
+.two {
+    padding: 16px 10%;
+}
