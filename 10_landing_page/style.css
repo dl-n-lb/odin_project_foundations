@@ -73,9 +73,15 @@ li {
 img {
     width: fit-content;
     height: 300px;
-    object-fit: scale-down;
+    object-fit: cover;
     object-position: 0% 30%;
     overflow: hidden;
+}
+
+.showcase img {
+    height: 250px;
+    width: 250px;
+    border-radius: 50px;
 }
 
 .subtitle {
@@ -87,16 +93,90 @@ img {
 .showcase {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .showcase-item {
-    width: 300px;
-}
-
-.heading-two  {
+    width: 250px;
+    color: #1F2937;
+    font-weight: 200;
     text-align: center;
 }
 
-.two {
+.heading-two  {
+    margin: 32px;
+    text-align: center;
+}
+
+.two, .three, .four {
     padding: 16px 10%;
+}
+
+.three {
+    background-color: #e5e7eb;
+    padding: 32px 10%;
+}
+
+.quote {
+    font-size: 36px;
+    font-style: italic;
+    font-weight: 200;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.quote-author {
+    font-weight: bold;
+    font-size: 24px;
+    text-align: right;
+}
+
+.footer {
+    background-color: #1F2937;
+    color: #E5E7EB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.call-to-action {
+    width: 100%;
+    background-color: #3882f6;
+    border-radius: 8px;
+    color: #E5E7EB;
+
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 64px;
+}
+
+.four {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    padding:0;
+}
+.sign-up-call {
+    margin: 0;
+    padding: 0;
+}
+
+.sign-up-two {
+    background-color: #3882F6;
+    color: #E5E7EB;
+    border-radius: 8px;
+    padding: 0px 32px;
+    border: 2px solid #E5E7EB;
 }
