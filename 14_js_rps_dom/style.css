@@ -1,0 +1,40 @@
+:root {
+    --bg-col: #FAFDFF;
+    --btn-hover-col: #DFDFEf88;
+    --text-col: #2f2f3f;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: var(--bg-col);
+    color: var(--text-col);
+}
+
+#container {
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.choice {
+    background-color: #ffffff00;
+    color: var(--text-col);
+    
+    border: 0;
+    padding: 8px 24px;
+    z-index: 1;
+}
+
+.choice:hover {
+    background-color: var(--btn-hover-col);
+    border-radius: 50px;
+    box-shadow: 0 0 25px 25px var(--btn-hover-col);
+    z-index: 0;
+}
