@@ -1,6 +1,6 @@
 :root {
     --bg-col: #FAFDFF;
-    --btn-hover-col: #DFDFEf88;
+    --btn-hover-col: #DFDFEf;
     --text-col: #2f2f3f;
 }
 
@@ -8,6 +8,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: var(--bg-col);
     color: var(--text-col);
+    z-index: 2;
 }
 
 #container {
@@ -28,13 +29,28 @@ body {
     color: var(--text-col);
     
     border: 0;
+    border-radius: 50px;
+
     padding: 8px 24px;
+
     z-index: 1;
+}
+
+@keyframes flood {
+    0%   { box-shadow: 0 0 0 5px   var(--btn-hover-col); }
+    100% { box-shadow: 0 0 0 max(100vh, 100vw) var(--btn-hover-col); }
+}
+
+@keyframes fade {
+    0%   { background: #DFDFEf00; }
+    100% { background: var(--btn-hover-col); }
 }
 
 .choice:hover {
     background-color: var(--btn-hover-col);
-    border-radius: 50px;
-    box-shadow: 0 0 25px 25px var(--btn-hover-col);
     z-index: 0;
+    animation-name: fade;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
 }

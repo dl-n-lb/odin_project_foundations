@@ -58,6 +58,20 @@ let playerChoiceClick = function(e) {
 
 }
 
+let createFlood = function(parent) {
+    let div = document.createElement('div');
+    div.style.animationName = "flood";
+    div.style.animationDuration = "0.5";
+    div.style.animationTimingFunction = "ease-in";
+    div.style.animationFillMode = "forward";
+    div.style.animationDelay = "1s";
+    div.style.width = "10px";
+    div.style.height = "10px";
+    div.style.backgroundColor = "var(--btn-hover-col)";
+    
+    parent.appendChild(div);
+}
+
 let startGame = function() {
     let children = container.children;
     let cl = children.length;
@@ -66,6 +80,7 @@ let startGame = function() {
         container.removeChild(children[0]);
     }
     console.log("Game");
+    createFlood(container);
     
     currScore = createScore(container);
     updateScore();
