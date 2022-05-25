@@ -128,19 +128,20 @@ a {
 }
 
 .showcase img {
-    height: 250px;
-    width: 250px;
+    height: var(--item-width);
+    width: var(--item-width);
     border-radius: var(--rounded-radius);
 }
 
 .showcase {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+    --item-width: 200px;
 }
 
 .showcase-item {
-    width: 250px;
+    width: var(--item-width);
     color: var(--text-col-dark);
     font-weight: var(--font-weight-light);
     text-align: center;
