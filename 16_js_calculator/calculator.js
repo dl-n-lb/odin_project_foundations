@@ -1,29 +1,33 @@
 
-let numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
-let operation_pipe = [];
-let curr_number_pipe = [];
+let curr_eqn = "";
 
 const operations = {
     '+': (a, b) => a + b,
     '-': (a, b) => a - b,
     '*': (a, b) => a * b,
     '/': (a, b) => a / b,
-    '+/-':  (a) => -a,
-    '%':    (a) => a*100,
-    '.': (a, b) => a + b/10,
-    '=': null,
+    '%': (a, b) => a*100,
 };
 
-let eval = function() {
-    while(operation_pipe.length > 1) {
-        a  = operation_pipe.shift();
-        op = operation_pipe.shift();
-        b  = operation_pipe.shift();
-        console.log(a, b, op);
-        operation_pipe.unshift(operations[op](a, b));
-    }
+let format = (eqn) => {
+    return eqn.match(/([\d|.]+)|[\+\-\*\/]/g);
 }
+
+let round = (n, dp) => {
+    return Math.round(n * Math.pow(10, dp)) / Math.pow(10, dp);
+}
+
+let eval = (eqn) => {
+    eqn = format(eqn);
+    if (eqn.length === 1) return eqn[0];
+    const next = eqn.findIndex(operator => (operator in operations));
+    const res = round(operations[eqn[next]](+eqn[next-1], +eqn[next+1]), 4);
+    eqn.shift(); eqn.shift(); eqn.shift();
+    eqn.unshift(res.toString());
+    return eval(eqn.join(""));
+}
+
+let prev_op_calc = false;
 
 let generateButtons = function() {
     let buttons = document.getElementsByClassName('button');
@@ -31,21 +35,23 @@ let generateButtons = function() {
         let id = buttons[i].id;
         buttons[i].textContent = id;
         buttons[i].addEventListener('click', (e) => {
-            if (numbers.includes(e.target.id)) {
-                curr_number_pipe.push(e.target.id);
-            } else if (e.target.id == "=") {
-                let n = parseInt(curr_number_pipe.join(""));
-                curr_number_pipe = [];
-                operation_pipe.push(n);
-                eval();
+            if (e.target.id === "=") {
+                curr_eqn = eval(curr_eqn);
+                prev_op_calc = true;
+            } else if (e.target.id === "AC") {
+                curr_eqn = "";
+            } else {
+                if (prev_op_calc && !(e.target.id in operations)) {
+                    curr_eqn = "";
+                    prev_op_calc = false;
+                }
+                curr_eqn = curr_eqn.concat(e.target.id);
             }
-            else {
-                let n = parseInt(curr_number_pipe.join(""));
-                curr_number_pipe = [];
-                operation_pipe.push(n);
-                operation_pipe.push(e.target.id);
-            }
-            console.log(operation_pipe);
+            
+
+            // make display text correct
+            let display = document.getElementsByClassName('display')[0];
+            display.textContent = curr_eqn;
         });
     }
 }
