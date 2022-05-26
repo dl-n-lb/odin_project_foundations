@@ -2,6 +2,7 @@ let container = document.getElementById("container");
 
 const modes = ['grayscale', 'rgb', 'color-pick'];
 let mode = 1;
+let color = '000000';
 
 const generateSquares = function(c, rows) {
     container.style.gridTemplateColumns = `repeat(${rows}, 1fr)`;
@@ -34,6 +35,7 @@ const formatSquares = function() {
                     col = Math.floor(Math.random() * 0xFFFFFF).toString(16);
                     break;
                 case 2:
+                    col = color;
                     break;
                 default:
                     break;
@@ -55,6 +57,9 @@ let colBtns = document.getElementsByClassName('set-color');
 for (let i = 0; i < colBtns.length; ++i) {
     colBtns[i].addEventListener('click', (e) => {
         mode = modes.indexOf(colBtns[i].id);
+    });
+    colBtns[i].addEventListener('change', (e) => {
+        color = e.target.value.slice(1);
     });
 }
 
