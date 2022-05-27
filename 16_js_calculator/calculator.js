@@ -6,11 +6,11 @@ const operations = {
     '-': (a, b) => a - b,
     '*': (a, b) => a * b,
     '/': (a, b) => a / b,
-    '%': (a, b) => a*100,
+    '%': (a, b) => a/100 * b,
 };
 
 let format = (eqn) => {
-    return eqn.match(/([\d|.]+)|[\+\-\*\/]/g);
+    return eqn.match(/([\d|.]+)|[\+\-\*\/\%]/g);
 }
 
 let round = (n, dp) => {
@@ -19,8 +19,15 @@ let round = (n, dp) => {
 
 let eval = (eqn) => {
     eqn = format(eqn);
+    console.log(eqn);
     if (eqn.length === 1) return eqn[0];
-    const next = eqn.findIndex(operator => (operator in operations));
+    let next = eqn.findIndex(operator => (operator in operations));
+    if(!eqn[next-1]) {
+        let conc = eqn.shift().concat(eqn.shift()); 
+        eqn.unshift(conc);
+        if (eqn.length === 1) return eqn[0];
+        next = eqn.findIndex(operator => (operator in operations));
+    }
     const res = round(operations[eqn[next]](+eqn[next-1], +eqn[next+1]), 4);
     eqn.shift(); eqn.shift(); eqn.shift();
     eqn.unshift(res.toString());
@@ -40,11 +47,14 @@ let generateButtons = function() {
                 prev_op_calc = true;
             } else if (e.target.id === "AC") {
                 curr_eqn = "";
+            } else if (e.target.id === "+/-") {
+                curr_eqn.concat("-");
             } else {
                 if (prev_op_calc && !(e.target.id in operations)) {
                     curr_eqn = "";
                     prev_op_calc = false;
                 }
+                prev_op_calc = false;
                 curr_eqn = curr_eqn.concat(e.target.id);
             }
             
