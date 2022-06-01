@@ -12,7 +12,7 @@
     
     <div class="content">
         <h2>This is a service (<em>real</em>)! Sign up here! <br> Its a great idea!</h2>
-        <form action="#" method="post">
+        <form action="#" method="post" class="input-form">
             <title>Let's a go!</title>
             <div class="input-col">
                 <label for="first-name">first name</label>
@@ -32,18 +32,18 @@
             </div>
             <div class="input-col">
                 <label for="password">password *</label>
-                <input type="password" name="password" required>
+                <input type="password" name="password" id="pass" required>
             </div>
             <div class="input-col">
                 <label for="confirm-password">confirm password *</label>
-                <input type="password" name="confirm-password" required>
+                <input type="password" name="confirm-password" id="conf-pass" required>
             </div>
+            <p id="error">Error: passwords do not match!</p>
+            <button type="submit" id="submit-button">create account</button>
         </form>
-        <button type="submit">create account</button>
         <p>Already have an account? <a href="#">Log in</a></p>
     </div>
     <div class="image-left">
-        <img src="images/astolfo4.jpg" alt="my king">
         <div>
             <img src="" alt="logo">
             <h1>Service</h1>

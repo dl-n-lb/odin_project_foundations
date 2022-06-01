@@ -16,17 +16,12 @@ body {
     min-width: clamp(400px, 50vw, 900px);
     height: 100vh;
     overflow: hidden;
-}
-
-.image-left > img {
-    /* Try and center on face better */
-    offset: 0px;
+    background-image: url(./images/astolfo4.jpg);
 }
 
 .image-left > div {
-    position: absolute;
-    left: 0;
-    top: 33%;
+    position: relative;
+    top: 33vh;
     width: clamp(400px, 50vw, 900px);
     background-color: rgba(0, 0, 0, 10%);
     display: flex;
@@ -40,11 +35,17 @@ body {
     color: var(--color-white);
 }
 
+.content {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}
+
 .content > * {
     padding-left: 2rem;
 }
 
-.content > button {
+.input-form > button {
     border: none;
     border-radius: 1rem;
     margin: 2rem;
@@ -53,12 +54,15 @@ body {
     color: var(--color-white);
 }
 
-.content > form {
+.input-form {
     display: flex;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 1rem;
 
     padding: 2rem 1rem;
+
+    color:white;
 
     box-shadow: 0 0 25px 10px rgb(220, 220, 220);
 }
@@ -68,9 +72,37 @@ body {
     flex-direction: column;
     
     box-sizing: border-box;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 
+    width: max(40%, 200px);
 
     background-color: rgb(255, 185, 220);
     border-radius: 10px 10px;
 }
+
+input {
+    border: none;
+    border-radius: 0.3rem;
+    background-color: white;
+    color: rgb(200, 200, 200);
+}
+
+
+.input-col > input:focus {
+    border: none;
+    border-color:rgb(220, 220, 220);
+}
+
+.input-col > input:invalid {
+    border-color: red;
+}
+
+.input-col > label {
+    font-size: 0.8rem;
+}
+
+#error {
+    color: red;
+    opacity: 0;
+}
+
