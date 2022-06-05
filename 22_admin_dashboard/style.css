@@ -11,6 +11,7 @@
     --background-bright: rgb(82, 193, 230);
     --background-mid: lightgray;
     --background-shadow: rgba(0, 0, 0, 0.2);
+    --background-accent: orange;
 
     --text-light: white;
     --text-dark: darkgray;
@@ -46,16 +47,18 @@ img {
     display: flex;
     flex-direction: column;
     gap: 50px;
+    z-index: 3;
 }
 
-.sidebar-options, 
+.sidebar-options,
 .settings-support {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.sidebar-option, .logo { 
+.sidebar-option,
+.logo {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -63,16 +66,16 @@ img {
     font-weight: bold;
 }
 
-.logo > h1 {
+.logo>h1 {
     font-size: var(--font-size-l);
 }
 
-.logo > img {
+.logo>img {
     width: 40px;
     height: 40px;
 }
 
-.sidebar-option > img {
+.sidebar-option>img {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -85,6 +88,10 @@ img {
     grid-template-columns: 3fr minmax(270px, 2fr);
 }
 
+.search {
+    z-index: 1;
+}
+
 .search-right {
     display: flex;
     justify-content: flex-end;
@@ -93,7 +100,8 @@ img {
     padding-right: 20px;
 }
 
-.notifications, .pfp-small {
+.notifications,
+.pfp-small {
     width: 60px;
     height: 60px;
     overflow: hidden;
@@ -117,14 +125,14 @@ img {
     align-items: center;
 }
 
-.search-bar > img {
+.search-bar>img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
 }
 
-.search-bar > input {
+.search-bar>input {
     background: var(--background-mid);
     border: none;
     border-radius: 500px;
@@ -133,13 +141,15 @@ img {
 }
 
 
-/* USER OPTIONS */ 
+/* USER OPTIONS */
 
 .user-options {
     display: grid;
     grid-template-columns: 0.5fr 1fr 3fr;
     align-items: center;
     gap: 0.8rem;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
+    z-index: 2;
 }
 
 .content-buttons {
@@ -175,7 +185,7 @@ img {
     height: 60px;
 }
 
-.hello > p {
+.hello>p {
     font-size: var(--font-size-xs);
     font-weight: bold;
 }
@@ -187,8 +197,9 @@ img {
     padding: 20px;
 
     display: grid;
-    grid: 1fr 1fr / 3fr 2fr;
+    grid: 1fr 1fr / minmax(400px, 3fr) auto;
     gap: 20px;
+    overflow: scroll;
 }
 
 .project-container {
@@ -199,7 +210,6 @@ img {
     display: grid;
     grid: repeat(3, 1fr) / repeat(2, 1fr);
     gap: 15px;
-    overflow: scroll;
     padding: 20px 5px;
 }
 
@@ -209,19 +219,46 @@ img {
     border-radius: 24px;
     box-shadow: 1px 5px 5px var(--background-shadow);
     max-height: 400px;
+    display: grid;
+    grid: 1fr 2fr 1fr / 1fr;
+    border-left: 10px solid var(--background-accent);
 }
 
-.card > p {
+.card>p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;   
-    overflow: hidden; 
+    -webkit-line-clamp: 4;
+    overflow: hidden;
 
     font-size: var(--font-size-s);
     color: var(--text-dark);
 }
 
+.card img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.more-options {
+    align-self: flex-end;
+    justify-self: end;
+    display: flex;
+    gap: 5px;
+}
+
+.more-options>.vertical-bar {
+    border-right: 1px solid var(--text-dark);
+    width: 1px;
+    height: 20px;
+}
+
 /* CONTENT ASIDE */
+
+.trending, .announcements {
+    max-width: 350px;
+}
+
 .side-box {
     background: var(--background-light);
     padding: 1.2rem;
@@ -229,18 +266,18 @@ img {
     box-shadow: 1px 5px 5px var(--background-shadow);
 }
 
-.announcements > .side-box {
+.announcements>.side-box {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
 }
 
-.announcement > h2 {
+.announcement>h2 {
     font-size: var(--font-size-s);
     padding-bottom: 0.2rem;
 }
 
-.announcement > p {
+.announcement>p {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -249,6 +286,34 @@ img {
     color: var(--text-dark);
 }
 
+.trending > .side-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .trending-user {
     display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.trending-user>img {
+    object-position: 0% 10%;
+}
+
+.trending-info > h2 {
+    font-size: var(--font-size-s);
+}
+
+.trending-info > p {
+    font-size: var(--font-size-s);
+    color: var(--text-dark);
+}
+
+.horizontal-line {
+    width: fit-content(80%);
+    height: 1px;
+    border-bottom: 1px solid var(--text-dark);
+    opacity: 0.3;
 }
